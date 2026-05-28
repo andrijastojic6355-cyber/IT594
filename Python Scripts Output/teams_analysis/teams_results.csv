@@ -1,0 +1,2 @@
+platform,connection_type,avg_jitter_ms,avg_rtt_ms,packet_loss_pct,simulcast_layers_active,simulcast_layers_total,layer_switches,architecture,architecture_confidence,inbound_ssrcs,outbound_ssrcs,simulcast_in_sdp
+teams,PEER-TO-PEER capable,8.06,33.25,0.0,1,1,0,SFU (Selective Forwarding Unit),Medium-High,2,1,False

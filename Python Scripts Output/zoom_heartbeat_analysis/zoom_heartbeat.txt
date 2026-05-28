@@ -1,0 +1,81 @@
+======================================================================
+HEARTBEAT & CONGESTION CONTROL ANALYSIS
+======================================================================
+  Platform : zoom
+  File     : C:\Users\andri\OneDrive\Desktop\Master\Log Files\rtcstats_dump_zoom.json
+  Analyzed : 2026-03-26 17:55:45
+  Snapshots: 316 getStats events
+
+  Nominated pair snapshots: 309
+
+======================================================================
+1. ICE CONSENT KEEP-ALIVE  (RFC 7675)
+======================================================================
+
+  The browser sends periodic STUN Binding Requests to maintain
+  consent to send media. These keep NAT mappings alive on the
+  TURN relay and detect dead connections.
+
+  Capture duration          : 214.8 seconds
+  Total consent requests    : 82 (cumulative)
+  Requests during capture   : 80
+  STUN requests sent        : 81
+  STUN responses received   : 81
+
+  Estimated keep-alive interval : 2.7 seconds
+  Keep-alive rate               : 22.3 requests/minute
+
+  Assessment : AGGRESSIVE (< 3s) - very fast dead-connection detection
+
+  STUN response rate : 100.0%
+  Finding: All keep-alives acknowledged — stable TURN connection throughout.
+
+  Consent counter increments per snapshot (shows polling granularity):
+    -1   : ######################################## (154 snapshots)
+    +1   : ######################################## (94 snapshots)
+    +2   : ######################################## (59 snapshots)
+    +22  : # (1 snapshots)
+
+  Note: Increments > 1 mean multiple keep-alives fired between
+  getStats polls — normal when polling interval > keep-alive interval.
+
+======================================================================
+2. CONGESTION CONTROL — AVAILABLE OUTGOING BANDWIDTH
+======================================================================
+
+  availableOutgoingBitrate is the browser's real-time estimate of
+  how much bandwidth is available for outgoing media. This is the
+  primary output of WebRTC's GCC (Google Congestion Control) algorithm.
+
+  availableOutgoingBitrate not found in candidate-pair stats.
+
+======================================================================
+3. ROUND TRIP TIME TIMELINE (from candidate-pair)
+======================================================================
+
+  currentRoundTripTime on the candidate-pair is measured via STUN
+  keep-alive responses — distinct from the audio RTT in remote-inbound-rtp.
+
+  Samples   : 309
+  Average   : 120.0 ms
+  Minimum   : 115.0 ms
+  Maximum   : 125.0 ms
+  Jitter    : 10.0 ms (range)
+
+  Assessment: ACCEPTABLE latency (100-200ms)
+
+======================================================================
+SUMMARY
+======================================================================
+
+  Platform                  : zoom
+  Capture duration          : 214.8 seconds
+  ICE keep-alive interval   : 2.7 seconds
+  ICE keep-alive rate       : 22.3 per minute
+  Keep-alive assessment     : AGGRESSIVE (< 3s) - very fast dead-connection detection
+  STUN response rate        : 100.0%
+  Avg RTT (STUN-based)      : 120.0 ms
+
+======================================================================
+Analysis Complete!
+======================================================================

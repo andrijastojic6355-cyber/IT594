@@ -1,0 +1,17 @@
+{
+  "platform": "zoom_multiple_users",
+  "file": "C:\\Users\\andri\\OneDrive\\Desktop\\Master\\Log Files\\rtcstats_dump_zoom_multiple_users.json",
+  "analyzed_at": "2026-03-26 17:54:03",
+  "connection_type": "LOCAL NETWORK only",
+  "avg_jitter_ms": null,
+  "avg_rtt_ms": null,
+  "packet_loss_pct": null,
+  "simulcast_layers_active": 0,
+  "simulcast_layers_total": 0,
+  "layer_switches": 0,
+  "architecture": "Inconclusive (solo/1-on-1 call - no multi-party data)",
+  "architecture_confidence": "N/A",
+  "inbound_ssrcs": 0,
+  "outbound_ssrcs": 0,
+  "simulcast_in_sdp": false
+}

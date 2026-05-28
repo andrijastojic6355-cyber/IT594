@@ -1,0 +1,109 @@
+======================================================================
+SCREEN SHARE ANALYSIS
+======================================================================
+  Platform : slack_ss
+  File     : C:\Users\andri\OneDrive\Desktop\Master\Log Files\rtcstats_dump_slack_ss.json
+  Analyzed : 2026-03-18 19:09:02
+  Events   : 121 getStats snapshots
+
+======================================================================
+1. SCREEN SHARE DETECTION
+======================================================================
+
+  Screen Share Detected  : YES
+  Detection Method       : navigator.mediaDevices.getDisplayMedia event
+  Track Label            : screen:0:0  (confirms screen capture, not camera)
+  Requested Resolution   : up to N/AxN/A
+  Requested Frame Rate   : N/A fps (ideal)
+
+  Confirmed in Stats     : YES - contentType=screenshare found in outbound-rtp
+  Camera also active     : YES
+
+======================================================================
+2. PEERCONNECTION LIFECYCLE
+======================================================================
+
+  PeerConnections created : 4
+  PC IDs seen             : ['45-1', '45-2', '45-3', '45-4']
+  Renegotiations          : 30 (createOffer + setLocal + setRemote cycles)
+
+  Timeline:
+    create    PC=45-1  (relative ts: 427.2 ms)
+    create    PC=45-2  (relative ts: 352.8 ms)
+    close     PC=45-1  (relative ts: 1664.6 ms)
+    remove    PC=45-1  (relative ts: 507.6 ms)
+    close     PC=45-2  (relative ts: -490.8 ms)
+    remove    PC=45-2  (relative ts: 490.8 ms)
+    create    PC=45-3  (relative ts: 69.2 ms)
+    create    PC=45-4  (relative ts: 390.6 ms)
+    close     PC=45-4  (relative ts: 7471.8 ms)
+    remove    PC=45-4  (relative ts: 499.5 ms)
+    close     PC=45-3  (relative ts: 594.0 ms)
+
+  Finding: Platform opened a SEPARATE PeerConnection for screen share.
+           Full new DTLS handshake for the screen share stream.
+
+======================================================================
+3. CODEC IDENTIFICATION
+======================================================================
+
+  Screen Share codec(s)  : video/AV1
+  Camera codec(s)        : N/A
+
+
+  video/AV1  clockRate=90000  params=level-idx=5;profile=0;tier=0;x-google-start-bitrate=1000
+
+======================================================================
+4. STREAM QUALITY & BANDWIDTH
+======================================================================
+
+  [PRIMARY]  SSRC: 1389958300
+    Resolution        : 1920x1080
+    Avg Frame Rate    : 9.1 fps
+    Total Data Sent   : 5.20 MB
+    Avg Bitrate       : 718 kbps
+    Peak Bitrate      : 3382 kbps
+    NACK Count        : 0
+    PLI Count         : 0
+    Quality Limit     : none
+    Static Opt.       : 15.3% of intervals near-zero bitrate
+
+  Simulcast on screen share : 1 SSRC(s) total, 1 with data
+  Finding: Single stream - no simulcast for screen share.
+
+======================================================================
+5. STATIC CONTENT OPTIMIZATION
+======================================================================
+
+  How well does the platform reduce bitrate on a static/unchanged screen?
+
+  Bitrate distribution (primary stream, 59 intervals):
+    Near-zero  (<10 kbps)  :   9 intervals  (15.3%)  <- static screen
+    Low        (10-100 kbps):  11 intervals  (18.6%)
+    Active     (>100 kbps)  :  39 intervals  (66.1%)  <- screen changing
+
+  Static optimization rating: MODERATE - some optimization on static content
+
+======================================================================
+SUMMARY
+======================================================================
+
+  Platform              : slack_ss
+  Screen Share Present  : YES
+  Track Label           : screen:0:0
+  Separate PC opened    : YES
+  Renegotiations        : 30
+  Screen Share Codec(s) : video/AV1
+  Camera Codec(s)       : N/A
+  Codec switch on SS    : NO
+  SS Resolution         : 1920x1080
+  SS Avg Frame Rate     : 9.1 fps
+  SS Simulcast Streams  : 1
+  Static Optimization   : MODERATE - some optimization on static content
+
+======================================================================
+Analysis Complete!
+======================================================================
+
+OUTPUT FILES
+----------------------------------------------------------------------

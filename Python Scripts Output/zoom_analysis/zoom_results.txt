@@ -1,0 +1,171 @@
+================================================================================
+ULTIMATE RTCStats ANALYSIS
+================================================================================
+Platform: zoom
+File: C:\Users\andri\OneDrive\Desktop\Master\Log Files\rtcstats_dump_zoom.json
+Analysis Date: 2026-03-26 17:45:26
+================================================================================
+
+================================================================================
+1. ICE CANDIDATE GATHERING
+================================================================================
+
+Host (Local): 10
+  - 192.168.100.7:50712 (UDP)
+  - 192.168.100.7:50712 (UDP)
+  ... and 8 more
+
+Total Candidates: 10
+Connection Type: LOCAL NETWORK only
+
+================================================================================
+2. NETWORK QUALITY METRICS
+================================================================================
+
+Analyzed 316 getStats events
+
+AUDIO QUALITY:
+--------------------------------------------------------------------------------
+
+VIDEO QUALITY:
+--------------------------------------------------------------------------------
+
+================================================================================
+3. SIMULCAST & LAYER SWITCHING ANALYSIS
+================================================================================
+
+================================================================================
+4. MULTI-PARTY ARCHITECTURE DETECTION
+================================================================================
+
+Inbound  SSRCs (streams you receive) : 0
+Outbound SSRCs (streams you send)    : 0
+Max concurrent inbound video streams : 0
+Simulcast RIDs detected              : None
+Simulcast in SDP (a=simulcast:)      : No
+RID lines in SDP (a=rid:)            : No
+
+Evidence:
+  * No inbound-rtp entries - capture may be solo/1-on-1 or call not active
+
+Verdict:    Inconclusive (solo/1-on-1 call - no multi-party data)
+Confidence: N/A
+
+Note: Re-capture with 3+ participants to get meaningful architecture data.
+
+Architecture Reference:
+  Mesh   - Each peer connects directly to every other peer.
+           Multiple DTLS handshakes; media traffic to many distinct IPs.
+  SFU    - Server forwards each stream individually to subscribers.
+           N inbound SSRCs for N participants; simulcast upload common.
+  MCU    - Server decodes, mixes, re-encodes all streams into one.
+           Always 1 inbound SSRC regardless of how many participants.
+  Hybrid - Combination (e.g. P2P for 1:1 calls, SFU for group calls).
+
+================================================================================
+5. CODEC EXTRACTION
+================================================================================
+
+--- OFFERED (SDP Offer) ---
+
+  AUDIO:
+    None found
+
+  VIDEO:
+    PT 96: VP8/90000
+           rtcp-fb: goog-remb, transport-cc, ccm fir, nack, nack pli
+    PT 97: rtx/90000
+    PT 103: H264/90000
+           rtcp-fb: goog-remb, transport-cc, ccm fir, nack, nack pli
+    PT 104: rtx/90000
+    PT 107: H264/90000
+           rtcp-fb: goog-remb, transport-cc, ccm fir, nack, nack pli
+    PT 108: rtx/90000
+    PT 109: H264/90000
+           rtcp-fb: goog-remb, transport-cc, ccm fir, nack, nack pli
+    PT 114: rtx/90000
+    PT 115: H264/90000
+           rtcp-fb: goog-remb, transport-cc, ccm fir, nack, nack pli
+    PT 116: rtx/90000
+    PT 117: H264/90000
+           rtcp-fb: goog-remb, transport-cc, ccm fir, nack, nack pli
+    PT 118: rtx/90000
+    PT 39: H264/90000
+           rtcp-fb: goog-remb, transport-cc, ccm fir, nack, nack pli
+    PT 40: rtx/90000
+    PT 45: AV1/90000
+           rtcp-fb: goog-remb, transport-cc, ccm fir, nack, nack pli
+    PT 46: rtx/90000
+    PT 98: VP9/90000
+           rtcp-fb: goog-remb, transport-cc, ccm fir, nack, nack pli
+    PT 99: rtx/90000
+    PT 100: VP9/90000
+           rtcp-fb: goog-remb, transport-cc, ccm fir, nack, nack pli
+    PT 101: rtx/90000
+    PT 119: H264/90000
+           rtcp-fb: goog-remb, transport-cc, ccm fir, nack, nack pli
+    PT 120: rtx/90000
+    PT 49: H265/90000
+           rtcp-fb: goog-remb, transport-cc, ccm fir, nack, nack pli
+    PT 50: rtx/90000
+    PT 123: red/90000
+    PT 124: rtx/90000
+    PT 125: ulpfec/90000
+
+--- NEGOTIATED (SDP Answer) ---
+
+  AUDIO:
+    None found
+
+  VIDEO:
+    PT 96: VP8/90000
+           rtcp-fb: goog-remb, transport-cc, ccm fir, nack, nack pli
+    PT 97: rtx/90000
+    PT 103: H264/90000
+           rtcp-fb: goog-remb, transport-cc, ccm fir, nack, nack pli
+    PT 104: rtx/90000
+    PT 107: H264/90000
+           rtcp-fb: goog-remb, transport-cc, ccm fir, nack, nack pli
+    PT 108: rtx/90000
+    PT 109: H264/90000
+           rtcp-fb: goog-remb, transport-cc, ccm fir, nack, nack pli
+    PT 114: rtx/90000
+    PT 115: H264/90000
+           rtcp-fb: goog-remb, transport-cc, ccm fir, nack, nack pli
+    PT 116: rtx/90000
+    PT 117: H264/90000
+           rtcp-fb: goog-remb, transport-cc, ccm fir, nack, nack pli
+    PT 118: rtx/90000
+    PT 39: H264/90000
+           rtcp-fb: goog-remb, transport-cc, ccm fir, nack, nack pli
+    PT 40: rtx/90000
+    PT 45: AV1/90000
+           rtcp-fb: goog-remb, transport-cc, ccm fir, nack, nack pli
+    PT 46: rtx/90000
+    PT 98: VP9/90000
+           rtcp-fb: goog-remb, transport-cc, ccm fir, nack, nack pli
+    PT 99: rtx/90000
+    PT 100: VP9/90000
+           rtcp-fb: goog-remb, transport-cc, ccm fir, nack, nack pli
+    PT 101: rtx/90000
+    PT 119: H264/90000
+           rtcp-fb: goog-remb, transport-cc, ccm fir, nack, nack pli
+    PT 120: rtx/90000
+    PT 49: H265/90000
+           rtcp-fb: goog-remb, transport-cc, ccm fir, nack, nack pli
+    PT 50: rtx/90000
+    PT 123: red/90000
+    PT 124: rtx/90000
+    PT 125: ulpfec/90000
+================================================================================
+SUMMARY
+================================================================================
+
+Platform:          zoom
+Connection:        LOCAL NETWORK only
+Video Codec:       red/90000, AV1/90000, VP9/90000, VP8/90000, H265/90000, H264/90000, ulpfec/90000
+Architecture:      Inconclusive (solo/1-on-1 call - no multi-party data) (N/A confidence)
+
+================================================================================
+Analysis Complete!
+================================================================================

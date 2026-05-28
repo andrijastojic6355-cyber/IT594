@@ -1,0 +1,240 @@
+================================================================================
+ULTIMATE RTCStats ANALYSIS
+================================================================================
+Platform: teams
+File: C:\Users\andri\OneDrive\Desktop\Master\Log Files\rtcstats_dump_teams.json
+Analysis Date: 2026-03-24 16:04:19
+================================================================================
+
+================================================================================
+1. ICE CANDIDATE GATHERING
+================================================================================
+
+Host (Local): 4
+  - 192.168.100.7:64558 (UDP)
+  - 192.168.100.7:9 (TCP)
+  ... and 2 more
+
+Server Reflexive (STUN): 2
+  - 188.120.106.61:7856 (UDP)
+  - 188.120.106.61:7875 (UDP)
+
+Relay (TURN): 6
+  - 20.202.68.45:51683 (UDP)
+  - 20.202.68.39:51433 (UDP)
+  ... and 4 more
+
+Total Candidates: 12
+Connection Type: PEER-TO-PEER capable
+
+================================================================================
+2. NETWORK QUALITY METRICS
+================================================================================
+
+Analyzed 127 getStats events
+
+AUDIO QUALITY:
+--------------------------------------------------------------------------------
+Jitter:       8.06 ms (avg), range: 5.00 - 13.00 ms
+RTT:          33.25 ms (avg), range: 23.48 - 51.16 ms
+Packet Loss:  0.0000% (0/4,042)
+
+VIDEO QUALITY:
+--------------------------------------------------------------------------------
+
+================================================================================
+3. SIMULCAST & LAYER SWITCHING ANALYSIS
+================================================================================
+
+INBOUND VIDEO (Received from Remote):
+--------------------------------------------------------------------------------
+  HIGH (SSRC: 1439929294)
+    Data Received: 23.21 MB
+    Avg Bitrate:   1471 kbps
+    Activity:      96.9%
+
+  Analysis: NO SIMULCAST (single quality stream)
+
+No layer switches detected (stable connection)
+
+================================================================================
+4. MULTI-PARTY ARCHITECTURE DETECTION
+================================================================================
+
+Inbound  SSRCs (streams you receive) : 2
+Outbound SSRCs (streams you send)    : 1
+Max concurrent inbound video streams : 1
+Simulcast RIDs detected              : None
+Simulcast in SDP (a=simulcast:)      : No
+RID lines in SDP (a=rid:)            : No
+
+Evidence:
+  * 2 unique inbound SSRCs -> SFU-style: individual streams forwarded per participant
+  * 1 outbound SSRC -> single quality upload (no simulcast in stats)
+
+Verdict:    SFU (Selective Forwarding Unit)
+Confidence: Medium-High
+
+Note: Multiple independent inbound streams point to SFU. No simulcast lines found - platform may use fixed bitrate or simulcast SDP was absent.
+
+Architecture Reference:
+  Mesh   - Each peer connects directly to every other peer.
+           Multiple DTLS handshakes; media traffic to many distinct IPs.
+  SFU    - Server forwards each stream individually to subscribers.
+           N inbound SSRCs for N participants; simulcast upload common.
+  MCU    - Server decodes, mixes, re-encodes all streams into one.
+           Always 1 inbound SSRC regardless of how many participants.
+  Hybrid - Combination (e.g. P2P for 1:1 calls, SFU for group calls).
+
+================================================================================
+5. CODEC EXTRACTION
+================================================================================
+
+--- OFFERED (SDP Offer) ---
+
+  AUDIO:
+    PT 111: opus/48000/2
+           rtcp-fb: transport-cc
+    PT 9: G722/8000
+    PT 0: PCMU/8000
+    PT 8: PCMA/8000
+    PT 110: telephone-event/48000
+    PT 126: telephone-event/8000
+
+  VIDEO:
+    PT 96: VP8/90000
+           rtcp-fb: goog-remb, transport-cc, ccm fir, nack, nack pli
+    PT 97: rtx/90000
+    PT 98: VP9/90000
+           rtcp-fb: goog-remb, transport-cc, ccm fir, nack, nack pli
+    PT 99: rtx/90000
+    PT 100: VP9/90000
+           rtcp-fb: goog-remb, transport-cc, ccm fir, nack, nack pli
+    PT 101: rtx/90000
+    PT 35: VP9/90000
+           rtcp-fb: goog-remb, transport-cc, ccm fir, nack, nack pli
+    PT 36: rtx/90000
+    PT 37: VP9/90000
+           rtcp-fb: goog-remb, transport-cc, ccm fir, nack, nack pli
+    PT 38: rtx/90000
+    PT 103: H264/90000
+           rtcp-fb: goog-remb, transport-cc, ccm fir, nack, nack pli
+    PT 104: rtx/90000
+    PT 107: H264/90000
+           rtcp-fb: goog-remb, transport-cc, ccm fir, nack, nack pli
+    PT 108: rtx/90000
+    PT 109: H264/90000
+           rtcp-fb: goog-remb, transport-cc, ccm fir, nack, nack pli
+    PT 114: rtx/90000
+    PT 115: H264/90000
+           rtcp-fb: goog-remb, transport-cc, ccm fir, nack, nack pli
+    PT 116: rtx/90000
+    PT 117: H264/90000
+           rtcp-fb: goog-remb, transport-cc, ccm fir, nack, nack pli
+    PT 118: rtx/90000
+    PT 39: H264/90000
+           rtcp-fb: goog-remb, transport-cc, ccm fir, nack, nack pli
+    PT 40: rtx/90000
+    PT 41: H264/90000
+           rtcp-fb: goog-remb, transport-cc, ccm fir, nack, nack pli
+    PT 42: rtx/90000
+    PT 43: H264/90000
+           rtcp-fb: goog-remb, transport-cc, ccm fir, nack, nack pli
+    PT 44: rtx/90000
+    PT 45: AV1/90000
+           rtcp-fb: goog-remb, transport-cc, ccm fir, nack, nack pli
+    PT 46: rtx/90000
+    PT 47: AV1/90000
+           rtcp-fb: goog-remb, transport-cc, ccm fir, nack, nack pli
+    PT 48: rtx/90000
+    PT 119: H264/90000
+           rtcp-fb: goog-remb, transport-cc, ccm fir, nack, nack pli
+    PT 120: rtx/90000
+    PT 121: H264/90000
+           rtcp-fb: goog-remb, transport-cc, ccm fir, nack, nack pli
+    PT 122: rtx/90000
+    PT 49: H265/90000
+           rtcp-fb: goog-remb, transport-cc, ccm fir, nack, nack pli
+    PT 50: rtx/90000
+    PT 51: H265/90000
+           rtcp-fb: goog-remb, transport-cc, ccm fir, nack, nack pli
+    PT 52: rtx/90000
+    PT 123: red/90000
+    PT 124: rtx/90000
+    PT 125: ulpfec/90000
+    PT 53: flexfec-03/90000
+           rtcp-fb: goog-remb, transport-cc
+
+  OTHER:
+    PT 63: red/48000/2
+    PT 13: CN/8000
+
+--- NEGOTIATED (SDP Answer) ---
+
+  AUDIO:
+    PT 111: opus/48000/2
+           rtcp-fb: transport-cc
+    PT 9: G722/8000
+    PT 0: PCMU/8000
+    PT 8: PCMA/8000
+    PT 110: telephone-event/48000
+    PT 126: telephone-event/8000
+
+  VIDEO:
+    PT 96: VP8/90000
+           rtcp-fb: goog-remb, transport-cc, ccm fir, nack, nack pli
+    PT 97: rtx/90000
+    PT 103: H264/90000
+           rtcp-fb: goog-remb, transport-cc, ccm fir, nack, nack pli
+    PT 104: rtx/90000
+    PT 107: H264/90000
+           rtcp-fb: goog-remb, transport-cc, ccm fir, nack, nack pli
+    PT 108: rtx/90000
+    PT 115: H264/90000
+           rtcp-fb: goog-remb, transport-cc, ccm fir, nack, nack pli
+    PT 116: rtx/90000
+    PT 117: H264/90000
+           rtcp-fb: goog-remb, transport-cc, ccm fir, nack, nack pli
+    PT 118: rtx/90000
+    PT 39: H264/90000
+           rtcp-fb: goog-remb, transport-cc, ccm fir, nack, nack pli
+    PT 40: rtx/90000
+    PT 45: AV1/90000
+           rtcp-fb: goog-remb, transport-cc, ccm fir, nack, nack pli
+    PT 46: rtx/90000
+    PT 98: VP9/90000
+           rtcp-fb: goog-remb, transport-cc, ccm fir, nack, nack pli
+    PT 99: rtx/90000
+    PT 100: VP9/90000
+           rtcp-fb: goog-remb, transport-cc, ccm fir, nack, nack pli
+    PT 101: rtx/90000
+    PT 119: H264/90000
+           rtcp-fb: goog-remb, transport-cc, ccm fir, nack, nack pli
+    PT 120: rtx/90000
+    PT 49: H265/90000
+           rtcp-fb: goog-remb, transport-cc, ccm fir, nack, nack pli
+    PT 50: rtx/90000
+    PT 123: red/90000
+    PT 124: rtx/90000
+    PT 125: ulpfec/90000
+
+  OTHER:
+    PT 63: red/48000/2
+    PT 13: CN/8000
+================================================================================
+SUMMARY
+================================================================================
+
+Platform:          teams
+Connection:        PEER-TO-PEER capable
+Audio Codec:       opus
+Video Codec:       VP8
+Audio Jitter:      8.06 ms
+Audio RTT:         33.25 ms
+Packet Loss:       0.0000%
+Simulcast Layers:  1/1 active
+Architecture:      SFU (Selective Forwarding Unit) (Medium-High confidence)
+
+================================================================================
+Analysis Complete!
+================================================================================

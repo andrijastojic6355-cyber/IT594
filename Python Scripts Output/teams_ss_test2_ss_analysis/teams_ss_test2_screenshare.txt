@@ -1,0 +1,107 @@
+======================================================================
+SCREEN SHARE ANALYSIS
+======================================================================
+  Platform : teams_ss_test2
+  File     : C:\Users\andri\OneDrive\Desktop\Master\Log Files\rtcstats_dump_teams_ss_test2.json
+  Analyzed : 2026-04-07 17:03:22
+  Events   : 313 getStats snapshots
+
+======================================================================
+1. SCREEN SHARE DETECTION
+======================================================================
+
+  Screen Share Detected  : YES
+  Detection Method       : navigator.mediaDevices.getDisplayMedia event
+  Track Label            : window:133436:1  (confirms screen capture, not camera)
+  Requested Resolution   : up to 1920x1080
+  Requested Frame Rate   : 15 fps (ideal)
+
+  Confirmed in Stats     : YES - contentType=screenshare found in outbound-rtp
+  Camera also active     : NO (screen-only session)
+
+======================================================================
+2. PEERCONNECTION LIFECYCLE
+======================================================================
+
+  PeerConnections created : 3
+  PC IDs seen             : ['57-1', '57-2', '57-3']
+  Renegotiations          : 3 (createOffer + setLocal + setRemote cycles)
+
+  Timeline:
+    create    PC=57-1  (relative ts: 435.1 ms)
+    create    PC=57-2  (relative ts: 133.2 ms)
+    close     PC=57-1  (relative ts: 2.6 ms)
+    remove    PC=57-1  (relative ts: 423.4 ms)
+    close     PC=57-2  (relative ts: 650.9 ms)
+    remove    PC=57-2  (relative ts: 500.7 ms)
+    create    PC=57-3  (relative ts: 2821.8 ms)
+    close     PC=57-3  (relative ts: 115.9 ms)
+    remove    PC=57-3  (relative ts: 389.4 ms)
+
+  Finding: Platform opened a SEPARATE PeerConnection for screen share.
+           Full new DTLS handshake for the screen share stream.
+
+======================================================================
+3. CODEC IDENTIFICATION
+======================================================================
+
+  Screen Share codec(s)  : video/VP8
+  Camera codec(s)        : N/A
+
+
+  video/VP8  clockRate=90000  params=max-fr=60;max-fs=12288
+
+======================================================================
+4. STREAM QUALITY & BANDWIDTH
+======================================================================
+
+  [PRIMARY]  SSRC: 1924913636
+    Resolution        : 1920x1044
+    Avg Frame Rate    : 13.7 fps
+    Total Data Sent   : 18.93 MB
+    Avg Bitrate       : 735 kbps
+    Peak Bitrate      : 2526 kbps
+    NACK Count        : 0
+    PLI Count         : 0
+    Quality Limit     : none
+    Static Opt.       : 0.5% of intervals near-zero bitrate
+
+  Simulcast on screen share : 1 SSRC(s) total, 1 with data
+  Finding: Single stream - no simulcast for screen share.
+
+======================================================================
+5. STATIC CONTENT OPTIMIZATION
+======================================================================
+
+  How well does the platform reduce bitrate on a static/unchanged screen?
+
+  Bitrate distribution (primary stream, 216 intervals):
+    Near-zero  (<10 kbps)  :   1 intervals  (0.5%)  <- static screen
+    Low        (10-100 kbps):  11 intervals  (5.1%)
+    Active     (>100 kbps)  : 204 intervals  (94.4%)  <- screen changing
+
+  Static optimization rating: LIMITED - continuous bitrate even on static screens
+
+======================================================================
+SUMMARY
+======================================================================
+
+  Platform              : teams_ss_test2
+  Screen Share Present  : YES
+  Track Label           : window:133436:1
+  Separate PC opened    : YES
+  Renegotiations        : 3
+  Screen Share Codec(s) : video/VP8
+  Camera Codec(s)       : N/A
+  Codec switch on SS    : NO
+  SS Resolution         : 1920x1044
+  SS Avg Frame Rate     : 13.7 fps
+  SS Simulcast Streams  : 1
+  Static Optimization   : LIMITED - continuous bitrate even on static screens
+
+======================================================================
+Analysis Complete!
+======================================================================
+
+OUTPUT FILES
+----------------------------------------------------------------------

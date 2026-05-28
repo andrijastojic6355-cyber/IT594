@@ -1,0 +1,17 @@
+{
+  "platform": "teams",
+  "file": "C:\\Users\\andri\\OneDrive\\Desktop\\Master\\Log Files\\rtcstats_dump_teams.json",
+  "analyzed_at": "2026-03-24 16:04:19",
+  "connection_type": "PEER-TO-PEER capable",
+  "avg_jitter_ms": 8.06,
+  "avg_rtt_ms": 33.25,
+  "packet_loss_pct": 0.0,
+  "simulcast_layers_active": 1,
+  "simulcast_layers_total": 1,
+  "layer_switches": 0,
+  "architecture": "SFU (Selective Forwarding Unit)",
+  "architecture_confidence": "Medium-High",
+  "inbound_ssrcs": 2,
+  "outbound_ssrcs": 1,
+  "simulcast_in_sdp": false
+}

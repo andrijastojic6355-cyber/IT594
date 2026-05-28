@@ -1,0 +1,2 @@
+ssrc,role,codec,resolution,avg_fps,total_mb,avg_kbps,peak_kbps,nack_count,pli_count,quality_limitation,static_intervals_pct
+1389958300,PRIMARY,video/AV1,1920x1080,9.1,5.2,718,3382,0,0,none,15.3

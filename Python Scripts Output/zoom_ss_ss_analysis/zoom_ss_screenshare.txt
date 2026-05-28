@@ -1,0 +1,94 @@
+======================================================================
+SCREEN SHARE ANALYSIS
+======================================================================
+  Platform : zoom_ss
+  File     : C:\Users\andri\OneDrive\Desktop\Master\Log Files\rtcstats_dump_zoom_ss.json
+  Analyzed : 2026-03-26 18:13:28
+  Events   : 436 getStats snapshots
+
+======================================================================
+1. SCREEN SHARE DETECTION
+======================================================================
+
+  Screen Share Detected  : YES
+  Detection Method       : navigator.mediaDevices.getDisplayMedia event
+  Track Label            : screen:0:0  (confirms screen capture, not camera)
+  Requested Resolution   : up to N/AxN/A
+  Requested Frame Rate   : N/A fps (ideal)
+
+  Confirmed in Stats     : contentType field not present
+  Camera also active     : NO (screen-only session)
+
+======================================================================
+2. PEERCONNECTION LIFECYCLE
+======================================================================
+
+  PeerConnections created : 6
+  PC IDs seen             : ['47-1', '47-2', '59-1', '59-2', '59-3', '59-4']
+  Renegotiations          : 5 (createOffer + setLocal + setRemote cycles)
+
+  Timeline:
+    create    PC=47-1  (relative ts: 29243.3 ms)
+    close     PC=47-1  (relative ts: 3.6 ms)
+    remove    PC=47-1  (relative ts: 506.9 ms)
+    create    PC=47-2  (relative ts: 14433.9 ms)
+    close     PC=47-2  (relative ts: 19.9 ms)
+    remove    PC=47-2  (relative ts: 480.3 ms)
+    create    PC=59-1  (relative ts: 49033.2 ms)
+    create    PC=59-2  (relative ts: 0.8 ms)
+    close     PC=59-1  (relative ts: 0.1 ms)
+    remove    PC=59-1  (relative ts: 295.7 ms)
+    close     PC=59-2  (relative ts: -295.0 ms)
+    remove    PC=59-2  (relative ts: 295.0 ms)
+    create    PC=59-3  (relative ts: 1605.9 ms)
+    create    PC=59-4  (relative ts: 1.2 ms)
+    close     PC=59-3  (relative ts: 633.2 ms)
+    remove    PC=59-3  (relative ts: 503.2 ms)
+    close     PC=59-4  (relative ts: -502.5 ms)
+    remove    PC=59-4  (relative ts: 503.5 ms)
+
+  Finding: Platform opened a SEPARATE PeerConnection for screen share.
+           Full new DTLS handshake for the screen share stream.
+
+======================================================================
+3. CODEC IDENTIFICATION
+======================================================================
+
+  Screen Share codec(s)  : N/A
+  Camera codec(s)        : N/A
+
+
+
+======================================================================
+4. STREAM QUALITY & BANDWIDTH
+======================================================================
+
+  No screen share video streams found in getStats data.
+
+======================================================================
+5. STATIC CONTENT OPTIMIZATION
+======================================================================
+
+  How well does the platform reduce bitrate on a static/unchanged screen?
+
+
+======================================================================
+SUMMARY
+======================================================================
+
+  Platform              : zoom_ss
+  Screen Share Present  : YES
+  Track Label           : screen:0:0
+  Separate PC opened    : YES
+  Renegotiations        : 5
+  Screen Share Codec(s) : N/A
+  Camera Codec(s)       : N/A
+  Codec switch on SS    : NO
+  Static Optimization   : N/A
+
+======================================================================
+Analysis Complete!
+======================================================================
+
+OUTPUT FILES
+----------------------------------------------------------------------

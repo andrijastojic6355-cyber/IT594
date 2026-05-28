@@ -1,0 +1,2 @@
+platform,connection_type,avg_jitter_ms,avg_rtt_ms,packet_loss_pct,simulcast_layers_active,simulcast_layers_total,layer_switches,architecture,architecture_confidence,inbound_ssrcs,outbound_ssrcs,simulcast_in_sdp
+zoom,LOCAL NETWORK only,,,,0,0,0,Inconclusive (solo/1-on-1 call - no multi-party data),N/A,0,0,False

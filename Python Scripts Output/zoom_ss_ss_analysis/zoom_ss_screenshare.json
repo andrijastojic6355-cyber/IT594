@@ -1,0 +1,15 @@
+{
+  "platform": "zoom_ss",
+  "file": "C:\\Users\\andri\\OneDrive\\Desktop\\Master\\Log Files\\rtcstats_dump_zoom_ss.json",
+  "analyzed_at": "2026-03-26 18:13:28",
+  "screen_share_detected": true,
+  "track_label": "screen:0:0",
+  "separate_pc_opened": true,
+  "renegotiations": 5,
+  "ss_codecs": [],
+  "camera_codecs": [],
+  "codec_switch": false,
+  "static_optimization": "N/A",
+  "static_near_zero_pct": 0.0,
+  "streams": []
+}

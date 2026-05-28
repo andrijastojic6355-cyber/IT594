@@ -1,0 +1,116 @@
+======================================================================
+HEARTBEAT & CONGESTION CONTROL ANALYSIS
+======================================================================
+  Platform : slack
+  File     : C:\Users\andri\OneDrive\Desktop\Master\Log Files\rtcstats_dump_slack.json
+  Analyzed : 2026-03-19 18:01:04
+  Snapshots: 584 getStats events
+
+  Nominated pair snapshots: 553
+
+======================================================================
+1. ICE CONSENT KEEP-ALIVE  (RFC 7675)
+======================================================================
+
+  The browser sends periodic STUN Binding Requests to maintain
+  consent to send media. These keep NAT mappings alive on the
+  TURN relay and detect dead connections.
+
+  Capture duration          : 577.4 seconds
+  Total consent requests    : 223 (cumulative)
+  Requests during capture   : 212
+  STUN requests sent        : 212
+  STUN responses received   : 212
+
+  Estimated keep-alive interval : 2.7 seconds
+  Keep-alive rate               : 22.0 requests/minute
+
+  Assessment : AGGRESSIVE (< 3s) - very fast dead-connection detection
+
+  STUN response rate : 100.0%
+  Finding: All keep-alives acknowledged — stable TURN connection throughout.
+
+  Consent counter increments per snapshot (shows polling granularity):
+    +0   : ######################################## (349 snapshots)
+    +1   : ######################################## (202 snapshots)
+    +10  : # (1 snapshots)
+
+  Note: Increments > 1 mean multiple keep-alives fired between
+  getStats polls — normal when polling interval > keep-alive interval.
+
+======================================================================
+2. CONGESTION CONTROL — AVAILABLE OUTGOING BANDWIDTH
+======================================================================
+
+  availableOutgoingBitrate is the browser's real-time estimate of
+  how much bandwidth is available for outgoing media. This is the
+  primary output of WebRTC's GCC (Google Congestion Control) algorithm.
+
+  Samples collected : 553
+  Starting estimate : 123 kbps
+  Final estimate    : 120 kbps
+  Average           : 126 kbps
+  Minimum           : 94 kbps
+  Maximum           : 1000 kbps
+  Range             : 906 kbps
+
+  Finding: Bandwidth estimate stable throughout the session.
+
+  Average change per snapshot : 7 kbps
+  Stability: STABLE — estimate changes very little between polls
+
+  Bandwidth estimate timeline (kbps, sampled every 5 snapshots):
+    t=  0      123 kbps  ||||
+    t= 27      121 kbps  ||||
+    t= 54      121 kbps  ||||
+    t= 81      119 kbps  ||||
+    t=108      117 kbps  ||||
+    t=135      121 kbps  ||||
+    t=162      119 kbps  ||||
+    t=189      119 kbps  ||||
+    t=216      121 kbps  ||||
+    t=243      121 kbps  ||||
+    t=270      123 kbps  ||||
+    t=297      121 kbps  ||||
+    t=324      119 kbps  ||||
+    t=351      119 kbps  ||||
+    t=378      106 kbps  |||
+    t=405      114 kbps  |||
+    t=432      109 kbps  |||
+    t=459      117 kbps  ||||
+    t=486      105 kbps  |||
+    t=513      105 kbps  |||
+    t=540      121 kbps  ||||
+
+======================================================================
+3. ROUND TRIP TIME TIMELINE (from candidate-pair)
+======================================================================
+
+  currentRoundTripTime on the candidate-pair is measured via STUN
+  keep-alive responses — distinct from the audio RTT in remote-inbound-rtp.
+
+  Samples   : 553
+  Average   : 31.0 ms
+  Minimum   : 30.0 ms
+  Maximum   : 32.0 ms
+  Jitter    : 2.0 ms (range)
+
+  Assessment: EXCELLENT latency (< 50ms)
+
+======================================================================
+SUMMARY
+======================================================================
+
+  Platform                  : slack
+  Capture duration          : 577.4 seconds
+  ICE keep-alive interval   : 2.7 seconds
+  ICE keep-alive rate       : 22.0 per minute
+  Keep-alive assessment     : AGGRESSIVE (< 3s) - very fast dead-connection detection
+  STUN response rate        : 100.0%
+  Avg available bandwidth   : 126 kbps
+  Bandwidth range           : 94 - 1000 kbps
+  Avg RTT (STUN-based)      : 31.0 ms
+
+======================================================================
+Analysis Complete!
+======================================================================

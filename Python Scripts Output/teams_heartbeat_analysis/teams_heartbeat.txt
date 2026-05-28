@@ -1,0 +1,115 @@
+======================================================================
+HEARTBEAT & CONGESTION CONTROL ANALYSIS
+======================================================================
+  Platform : teams
+  File     : C:\Users\andri\OneDrive\Desktop\Master\Log Files\rtcstats_dump_teams.json
+  Analyzed : 2026-03-24 16:30:08
+  Snapshots: 127 getStats events
+
+  Nominated pair snapshots: 124
+
+======================================================================
+1. ICE CONSENT KEEP-ALIVE  (RFC 7675)
+======================================================================
+
+  The browser sends periodic STUN Binding Requests to maintain
+  consent to send media. These keep NAT mappings alive on the
+  TURN relay and detect dead connections.
+
+  Capture duration          : 161.1 seconds
+  Total consent requests    : 70 (cumulative)
+  Requests during capture   : 59
+  STUN requests sent        : 59
+  STUN responses received   : 59
+
+  Estimated keep-alive interval : 2.7 seconds
+  Keep-alive rate               : 22.0 requests/minute
+
+  Assessment : AGGRESSIVE (< 3s) - very fast dead-connection detection
+
+  STUN response rate : 100.0%
+  Finding: All keep-alives acknowledged — stable TURN connection throughout.
+
+  Consent counter increments per snapshot (shows polling granularity):
+    +0   : ######################################## (64 snapshots)
+    +1   : ######################################## (59 snapshots)
+
+  Note: Increments > 1 mean multiple keep-alives fired between
+  getStats polls — normal when polling interval > keep-alive interval.
+
+======================================================================
+2. CONGESTION CONTROL — AVAILABLE OUTGOING BANDWIDTH
+======================================================================
+
+  availableOutgoingBitrate is the browser's real-time estimate of
+  how much bandwidth is available for outgoing media. This is the
+  primary output of WebRTC's GCC (Google Congestion Control) algorithm.
+
+  Samples collected : 124
+  Starting estimate : 109 kbps
+  Final estimate    : 103 kbps
+  Average           : 99 kbps
+  Minimum           : 78 kbps
+  Maximum           : 111 kbps
+  Range             : 33 kbps
+
+  Finding: Bandwidth estimate stable throughout the session.
+
+  Average change per snapshot : 2 kbps
+  Stability: STABLE — estimate changes very little between polls
+
+  Bandwidth estimate timeline (kbps, sampled every 5 snapshots):
+    t=  0      109 kbps  ||||||||||||||||||||||||||||||||||
+    t=  6      102 kbps  ||||||||||||||||||||||||||||||||
+    t= 12      102 kbps  ||||||||||||||||||||||||||||||||
+    t= 18      102 kbps  ||||||||||||||||||||||||||||||||
+    t= 24       84 kbps  ||||||||||||||||||||||||||
+    t= 30       96 kbps  ||||||||||||||||||||||||||||||
+    t= 36       96 kbps  ||||||||||||||||||||||||||||||
+    t= 42      101 kbps  |||||||||||||||||||||||||||||||
+    t= 48       94 kbps  |||||||||||||||||||||||||||||
+    t= 54       94 kbps  |||||||||||||||||||||||||||||
+    t= 60      101 kbps  |||||||||||||||||||||||||||||||
+    t= 66      101 kbps  |||||||||||||||||||||||||||||||
+    t= 72      101 kbps  |||||||||||||||||||||||||||||||
+    t= 78       94 kbps  |||||||||||||||||||||||||||||
+    t= 84      103 kbps  ||||||||||||||||||||||||||||||||
+    t= 90      103 kbps  ||||||||||||||||||||||||||||||||
+    t= 96       80 kbps  |||||||||||||||||||||||||
+    t=102      103 kbps  ||||||||||||||||||||||||||||||||
+    t=108      101 kbps  |||||||||||||||||||||||||||||||
+    t=114      104 kbps  ||||||||||||||||||||||||||||||||
+    t=120      103 kbps  ||||||||||||||||||||||||||||||||
+
+======================================================================
+3. ROUND TRIP TIME TIMELINE (from candidate-pair)
+======================================================================
+
+  currentRoundTripTime on the candidate-pair is measured via STUN
+  keep-alive responses — distinct from the audio RTT in remote-inbound-rtp.
+
+  Samples   : 124
+  Average   : 32.2 ms
+  Minimum   : 23.0 ms
+  Maximum   : 42.0 ms
+  Jitter    : 19.0 ms (range)
+
+  Assessment: EXCELLENT latency (< 50ms)
+
+======================================================================
+SUMMARY
+======================================================================
+
+  Platform                  : teams
+  Capture duration          : 161.1 seconds
+  ICE keep-alive interval   : 2.7 seconds
+  ICE keep-alive rate       : 22.0 per minute
+  Keep-alive assessment     : AGGRESSIVE (< 3s) - very fast dead-connection detection
+  STUN response rate        : 100.0%
+  Avg available bandwidth   : 99 kbps
+  Bandwidth range           : 78 - 111 kbps
+  Avg RTT (STUN-based)      : 32.2 ms
+
+======================================================================
+Analysis Complete!
+======================================================================
