@@ -1,0 +1,17 @@
+{
+  "platform": "slack",
+  "file": "C:\\Users\\andri\\OneDrive\\Desktop\\Master\\Log Files\\rtcstats_dump_slack.json",
+  "analyzed_at": "2026-03-18 15:20:46",
+  "connection_type": "TURN RELAY (restricted network)",
+  "avg_jitter_ms": 9.87,
+  "avg_rtt_ms": 30.82,
+  "packet_loss_pct": 0.0033,
+  "simulcast_layers_active": 1,
+  "simulcast_layers_total": 1,
+  "layer_switches": 0,
+  "architecture": "SFU (Selective Forwarding Unit)",
+  "architecture_confidence": "Medium-High",
+  "inbound_ssrcs": 2,
+  "outbound_ssrcs": 1,
+  "simulcast_in_sdp": false
+}

@@ -1,0 +1,17 @@
+{
+  "platform": "discord",
+  "file": "C:\\Users\\Andrija\\OneDrive\\Desktop\\Master\\Log Files\\rtcstats_dump_discord.json",
+  "analyzed_at": "2026-03-14 18:41:59",
+  "connection_type": "LOCAL NETWORK only",
+  "avg_jitter_ms": 9.13,
+  "avg_rtt_ms": 37.42,
+  "packet_loss_pct": 0.0,
+  "simulcast_layers_active": 1,
+  "simulcast_layers_total": 1,
+  "layer_switches": 0,
+  "architecture": "SFU (Selective Forwarding Unit)",
+  "architecture_confidence": "Medium-High",
+  "inbound_ssrcs": 2,
+  "outbound_ssrcs": 1,
+  "simulcast_in_sdp": false
+}

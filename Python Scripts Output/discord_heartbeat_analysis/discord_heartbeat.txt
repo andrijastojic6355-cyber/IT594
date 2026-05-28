@@ -1,0 +1,117 @@
+======================================================================
+HEARTBEAT & CONGESTION CONTROL ANALYSIS
+======================================================================
+  Platform : discord
+  File     : C:\Users\andri\OneDrive\Desktop\Master\Log Files\rtcstats_dump_discord.json
+  Analyzed : 2026-03-19 17:32:00
+  Snapshots: 48 getStats events
+
+  Nominated pair snapshots: 44
+
+======================================================================
+1. ICE CONSENT KEEP-ALIVE  (RFC 7675)
+======================================================================
+
+  The browser sends periodic STUN Binding Requests to maintain
+  consent to send media. These keep NAT mappings alive on the
+  TURN relay and detect dead connections.
+
+  Capture duration          : 43.0 seconds
+  Total consent requests    : 19 (cumulative)
+  Requests during capture   : 17
+  STUN requests sent        : 17
+  STUN responses received   : 17
+
+  Estimated keep-alive interval : 2.5 seconds
+  Keep-alive rate               : 23.7 requests/minute
+
+  Assessment : AGGRESSIVE (< 3s) - very fast dead-connection detection
+
+  STUN response rate : 100.0%
+  Finding: All keep-alives acknowledged — stable TURN connection throughout.
+
+  Consent counter increments per snapshot (shows polling granularity):
+    +0   : ########################## (26 snapshots)
+    +1   : ################# (17 snapshots)
+
+  Note: Increments > 1 mean multiple keep-alives fired between
+  getStats polls — normal when polling interval > keep-alive interval.
+
+======================================================================
+2. CONGESTION CONTROL — AVAILABLE OUTGOING BANDWIDTH
+======================================================================
+
+  availableOutgoingBitrate is the browser's real-time estimate of
+  how much bandwidth is available for outgoing media. This is the
+  primary output of WebRTC's GCC (Google Congestion Control) algorithm.
+
+  Samples collected : 44
+  Starting estimate : 300 kbps
+  Final estimate    : 140 kbps
+  Average           : 187 kbps
+  Minimum           : 133 kbps
+  Maximum           : 332 kbps
+  Range             : 198 kbps
+
+  Ramp-down detected: avg first quarter 312 kbps -> last quarter 142 kbps
+  Finding: Congestion controller reduced estimate — possible network degradation.
+
+  Average change per snapshot : 6 kbps
+  Stability: STABLE — estimate changes very little between polls
+
+  Bandwidth estimate timeline (kbps, sampled every 5 snapshots):
+    t=  0      300 kbps  |||||||||||||||||||||||||||||||
+    t=  2      300 kbps  |||||||||||||||||||||||||||||||
+    t=  4      300 kbps  |||||||||||||||||||||||||||||||
+    t=  6      301 kbps  |||||||||||||||||||||||||||||||
+    t=  8      332 kbps  |||||||||||||||||||||||||||||||||||
+    t= 10      332 kbps  |||||||||||||||||||||||||||||||||||
+    t= 12      133 kbps  ||||||||||||||
+    t= 14      133 kbps  ||||||||||||||
+    t= 16      133 kbps  ||||||||||||||
+    t= 18      133 kbps  ||||||||||||||
+    t= 20      133 kbps  ||||||||||||||
+    t= 22      138 kbps  ||||||||||||||
+    t= 24      140 kbps  ||||||||||||||
+    t= 26      140 kbps  ||||||||||||||
+    t= 28      146 kbps  |||||||||||||||
+    t= 30      146 kbps  |||||||||||||||
+    t= 32      146 kbps  |||||||||||||||
+    t= 34      141 kbps  ||||||||||||||
+    t= 36      143 kbps  |||||||||||||||
+    t= 38      142 kbps  ||||||||||||||
+    t= 40      144 kbps  |||||||||||||||
+    t= 42      140 kbps  ||||||||||||||
+
+======================================================================
+3. ROUND TRIP TIME TIMELINE (from candidate-pair)
+======================================================================
+
+  currentRoundTripTime on the candidate-pair is measured via STUN
+  keep-alive responses — distinct from the audio RTT in remote-inbound-rtp.
+
+  Samples   : 44
+  Average   : 37.2 ms
+  Minimum   : 36.0 ms
+  Maximum   : 38.0 ms
+  Jitter    : 2.0 ms (range)
+
+  Assessment: EXCELLENT latency (< 50ms)
+
+======================================================================
+SUMMARY
+======================================================================
+
+  Platform                  : discord
+  Capture duration          : 43.0 seconds
+  ICE keep-alive interval   : 2.5 seconds
+  ICE keep-alive rate       : 23.7 per minute
+  Keep-alive assessment     : AGGRESSIVE (< 3s) - very fast dead-connection detection
+  STUN response rate        : 100.0%
+  Avg available bandwidth   : 187 kbps
+  Bandwidth range           : 133 - 332 kbps
+  Avg RTT (STUN-based)      : 37.2 ms
+
+======================================================================
+Analysis Complete!
+======================================================================

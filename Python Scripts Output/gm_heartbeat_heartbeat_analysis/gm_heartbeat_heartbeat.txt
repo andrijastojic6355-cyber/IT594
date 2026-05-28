@@ -1,0 +1,118 @@
+======================================================================
+HEARTBEAT & CONGESTION CONTROL ANALYSIS
+======================================================================
+  Platform : gm_heartbeat
+  File     : C:\Users\andri\OneDrive\Desktop\Master\Log Files\rtcstats_dump_gm_heartbeat.json
+  Analyzed : 2026-03-19 15:48:01
+  Snapshots: 21 getStats events
+
+  Nominated pair snapshots: 21
+
+======================================================================
+1. ICE CONSENT KEEP-ALIVE  (RFC 7675)
+======================================================================
+
+  The browser sends periodic STUN Binding Requests to maintain
+  consent to send media. These keep NAT mappings alive on the
+  TURN relay and detect dead connections.
+
+  Capture duration          : 921.3 seconds
+  Total consent requests    : 352 (cumulative)
+  Requests during capture   : 339
+  STUN requests sent        : 339
+  STUN responses received   : 339
+
+  Estimated keep-alive interval : 2.7 seconds
+  Keep-alive rate               : 22.1 requests/minute
+
+  Assessment : AGGRESSIVE (< 3s) - very fast dead-connection detection
+
+  STUN response rate : 100.0%
+  Finding: All keep-alives acknowledged — stable TURN connection throughout.
+
+  Consent counter increments per snapshot (shows polling granularity):
+    +0   : ## (2 snapshots)
+    +1   : ## (2 snapshots)
+    +6   : # (1 snapshots)
+    +22  : ############## (14 snapshots)
+    +23  : # (1 snapshots)
+
+  Note: Increments > 1 mean multiple keep-alives fired between
+  getStats polls — normal when polling interval > keep-alive interval.
+
+======================================================================
+2. CONGESTION CONTROL — AVAILABLE OUTGOING BANDWIDTH
+======================================================================
+
+  availableOutgoingBitrate is the browser's real-time estimate of
+  how much bandwidth is available for outgoing media. This is the
+  primary output of WebRTC's GCC (Google Congestion Control) algorithm.
+
+  Samples collected : 21
+  Starting estimate : 458 kbps
+  Final estimate    : 458 kbps
+  Average           : 458 kbps
+  Minimum           : 458 kbps
+  Maximum           : 458 kbps
+  Range             : 0 kbps
+
+  Finding: Bandwidth estimate stable throughout the session.
+
+  Average change per snapshot : 0 kbps
+  Stability: STABLE — estimate changes very little between polls
+
+  Bandwidth estimate timeline (kbps, sampled every 5 snapshots):
+    t=  0      458 kbps  |||||||||||||||||||||||||||||||||||
+    t=  1      458 kbps  |||||||||||||||||||||||||||||||||||
+    t=  2      458 kbps  |||||||||||||||||||||||||||||||||||
+    t=  3      458 kbps  |||||||||||||||||||||||||||||||||||
+    t=  4      458 kbps  |||||||||||||||||||||||||||||||||||
+    t=  5      458 kbps  |||||||||||||||||||||||||||||||||||
+    t=  6      458 kbps  |||||||||||||||||||||||||||||||||||
+    t=  7      458 kbps  |||||||||||||||||||||||||||||||||||
+    t=  8      458 kbps  |||||||||||||||||||||||||||||||||||
+    t=  9      458 kbps  |||||||||||||||||||||||||||||||||||
+    t= 10      458 kbps  |||||||||||||||||||||||||||||||||||
+    t= 11      458 kbps  |||||||||||||||||||||||||||||||||||
+    t= 12      458 kbps  |||||||||||||||||||||||||||||||||||
+    t= 13      458 kbps  |||||||||||||||||||||||||||||||||||
+    t= 14      458 kbps  |||||||||||||||||||||||||||||||||||
+    t= 15      458 kbps  |||||||||||||||||||||||||||||||||||
+    t= 16      458 kbps  |||||||||||||||||||||||||||||||||||
+    t= 17      458 kbps  |||||||||||||||||||||||||||||||||||
+    t= 18      458 kbps  |||||||||||||||||||||||||||||||||||
+    t= 19      458 kbps  |||||||||||||||||||||||||||||||||||
+    t= 20      458 kbps  |||||||||||||||||||||||||||||||||||
+
+======================================================================
+3. ROUND TRIP TIME TIMELINE (from candidate-pair)
+======================================================================
+
+  currentRoundTripTime on the candidate-pair is measured via STUN
+  keep-alive responses — distinct from the audio RTT in remote-inbound-rtp.
+
+  Samples   : 21
+  Average   : 58.3 ms
+  Minimum   : 51.0 ms
+  Maximum   : 73.0 ms
+  Jitter    : 22.0 ms (range)
+
+  Assessment: GOOD latency (50-100ms)
+
+======================================================================
+SUMMARY
+======================================================================
+
+  Platform                  : gm_heartbeat
+  Capture duration          : 921.3 seconds
+  ICE keep-alive interval   : 2.7 seconds
+  ICE keep-alive rate       : 22.1 per minute
+  Keep-alive assessment     : AGGRESSIVE (< 3s) - very fast dead-connection detection
+  STUN response rate        : 100.0%
+  Avg available bandwidth   : 458 kbps
+  Bandwidth range           : 458 - 458 kbps
+  Avg RTT (STUN-based)      : 58.3 ms
+
+======================================================================
+Analysis Complete!
+======================================================================

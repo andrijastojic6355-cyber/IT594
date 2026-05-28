@@ -1,0 +1,93 @@
+================================================================================
+ULTIMATE RTCStats ANALYSIS
+================================================================================
+Platform: discord
+File: C:\Users\Andrija\OneDrive\Desktop\Master\Log Files\rtcstats_dump_discord.json
+Analysis Date: 2026-03-14 18:41:59
+================================================================================
+
+================================================================================
+1. ICE CANDIDATE GATHERING
+================================================================================
+
+Host (Local): 2
+  - 192.168.100.7:53831 (UDP)
+  - 192.168.100.7:9 (TCP)
+
+Total Candidates: 2
+Connection Type: LOCAL NETWORK only
+
+================================================================================
+2. NETWORK QUALITY METRICS
+================================================================================
+
+Analyzed 48 getStats events
+
+AUDIO QUALITY:
+--------------------------------------------------------------------------------
+Jitter:       9.13 ms (avg), range: 5.00 - 12.00 ms
+RTT:          37.42 ms (avg), range: 36.57 - 38.53 ms
+Packet Loss:  0.0000% (0/700)
+
+VIDEO QUALITY:
+--------------------------------------------------------------------------------
+
+================================================================================
+3. SIMULCAST & LAYER SWITCHING ANALYSIS
+================================================================================
+
+INBOUND VIDEO (Received from Remote):
+--------------------------------------------------------------------------------
+  HIGH (SSRC: 173045)
+    Data Received: 10.38 MB
+    Avg Bitrate:   2296 kbps
+    Activity:      77.1%
+
+  Analysis: NO SIMULCAST (single quality stream)
+
+No layer switches detected (stable connection)
+
+================================================================================
+4. MULTI-PARTY ARCHITECTURE DETECTION
+================================================================================
+
+Inbound  SSRCs (streams you receive) : 2
+Outbound SSRCs (streams you send)    : 1
+Max concurrent inbound video streams : 1
+Simulcast RIDs detected              : None
+Simulcast in SDP (a=simulcast:)      : No
+RID lines in SDP (a=rid:)            : No
+
+Evidence:
+  * 2 unique inbound SSRCs -> SFU-style: individual streams forwarded per participant
+  * 1 outbound SSRC -> single quality upload (no simulcast in stats)
+
+Verdict:    SFU (Selective Forwarding Unit)
+Confidence: Medium-High
+
+Note: Multiple independent inbound streams point to SFU. No simulcast lines found - platform may use fixed bitrate or simulcast SDP was absent.
+
+Architecture Reference:
+  Mesh   - Each peer connects directly to every other peer.
+           Multiple DTLS handshakes; media traffic to many distinct IPs.
+  SFU    - Server forwards each stream individually to subscribers.
+           N inbound SSRCs for N participants; simulcast upload common.
+  MCU    - Server decodes, mixes, re-encodes all streams into one.
+           Always 1 inbound SSRC regardless of how many participants.
+  Hybrid - Combination (e.g. P2P for 1:1 calls, SFU for group calls).
+
+================================================================================
+SUMMARY
+================================================================================
+
+Platform:          discord
+Connection:        LOCAL NETWORK only
+Audio Jitter:      9.13 ms
+Audio RTT:         37.42 ms
+Packet Loss:       0.0000%
+Simulcast Layers:  1/1 active
+Architecture:      SFU (Selective Forwarding Unit) (Medium-High confidence)
+
+================================================================================
+Analysis Complete!
+================================================================================

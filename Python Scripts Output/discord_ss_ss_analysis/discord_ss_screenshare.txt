@@ -1,0 +1,102 @@
+======================================================================
+SCREEN SHARE ANALYSIS
+======================================================================
+  Platform : discord_ss
+  File     : C:\Users\andri\OneDrive\Desktop\Master\Log Files\rtcstats_dump_discord_ss.json
+  Analyzed : 2026-03-16 17:48:36
+  Events   : 267 getStats snapshots
+
+======================================================================
+1. SCREEN SHARE DETECTION
+======================================================================
+
+  Screen Share Detected  : YES
+  Detection Method       : navigator.mediaDevices.getDisplayMedia event
+  Track Label            : screen:0:0  (confirms screen capture, not camera)
+  Requested Resolution   : up to N/AxN/A
+  Requested Frame Rate   : 30 fps (ideal)
+
+  Confirmed in Stats     : YES - contentType=screenshare found in outbound-rtp
+  Camera also active     : NO (screen-only session)
+
+======================================================================
+2. PEERCONNECTION LIFECYCLE
+======================================================================
+
+  PeerConnections created : 2
+  PC IDs seen             : ['43-1', '43-2']
+  Renegotiations          : 7 (createOffer + setLocal + setRemote cycles)
+
+  Timeline:
+    create    PC=43-1  (relative ts: 459.2 ms)
+    create    PC=43-2  (relative ts: 37.8 ms)
+    close     PC=43-2  (relative ts: 97.2 ms)
+    close     PC=43-1  (relative ts: 1116.0 ms)
+
+  Finding: Platform opened a SEPARATE PeerConnection for screen share.
+           Full new DTLS handshake for the screen share stream.
+
+======================================================================
+3. CODEC IDENTIFICATION
+======================================================================
+
+  Screen Share codec(s)  : video/H264
+  Camera codec(s)        : N/A
+
+
+  video/H264  clockRate=90000  params=level-asymmetry-allowed=1;packetization-mode=1;profile-level-id=42e01f;x-google-max-bitrate=2500
+
+======================================================================
+4. STREAM QUALITY & BANDWIDTH
+======================================================================
+
+  [PRIMARY]  SSRC: 965155736
+    Resolution        : 1280x720
+    Avg Frame Rate    : 10.2 fps
+    Total Data Sent   : 0.00 MB
+    Avg Bitrate       : 0 kbps
+    Peak Bitrate      : 0 kbps
+    NACK Count        : 0
+    PLI Count         : 0
+    Quality Limit     : none
+    Static Opt.       : 100.0% of intervals near-zero bitrate
+
+  Simulcast on screen share : 1 SSRC(s) total, 0 with data
+  Finding: Single stream - no simulcast for screen share.
+
+======================================================================
+5. STATIC CONTENT OPTIMIZATION
+======================================================================
+
+  How well does the platform reduce bitrate on a static/unchanged screen?
+
+  Bitrate distribution (primary stream, 119 intervals):
+    Near-zero  (<10 kbps)  : 119 intervals  (100.0%)  <- static screen
+    Low        (10-100 kbps):   0 intervals  (0.0%)
+    Active     (>100 kbps)  :   0 intervals  (0.0%)  <- screen changing
+
+  Static optimization rating: GOOD - drops bitrate effectively on static content
+
+======================================================================
+SUMMARY
+======================================================================
+
+  Platform              : discord_ss
+  Screen Share Present  : YES
+  Track Label           : screen:0:0
+  Separate PC opened    : YES
+  Renegotiations        : 7
+  Screen Share Codec(s) : video/H264
+  Camera Codec(s)       : N/A
+  Codec switch on SS    : NO
+  SS Resolution         : 1280x720
+  SS Avg Frame Rate     : 10.2 fps
+  SS Simulcast Streams  : 1
+  Static Optimization   : GOOD - drops bitrate effectively on static content
+
+======================================================================
+Analysis Complete!
+======================================================================
+
+OUTPUT FILES
+----------------------------------------------------------------------

@@ -1,0 +1,2 @@
+platform,connection_type,avg_jitter_ms,avg_rtt_ms,packet_loss_pct,simulcast_layers_active,simulcast_layers_total,layer_switches,architecture,architecture_confidence,inbound_ssrcs,outbound_ssrcs,simulcast_in_sdp
+discord_group_call,LOCAL NETWORK only,10.25,94.19,0.0,0,0,0,SFU (Selective Forwarding Unit),Medium-High,5,1,False

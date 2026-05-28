@@ -1,0 +1,17 @@
+{
+  "platform": "discord_multiple_people_server",
+  "file": "C:\\Users\\andri\\OneDrive\\Desktop\\Master\\Log Files\\rtcstats_dump_discord_multiple_people_server.json",
+  "analyzed_at": "2026-04-07 16:50:51",
+  "connection_type": "LOCAL NETWORK only",
+  "avg_jitter_ms": 8.99,
+  "avg_rtt_ms": 83.59,
+  "packet_loss_pct": null,
+  "simulcast_layers_active": 1,
+  "simulcast_layers_total": 2,
+  "layer_switches": 0,
+  "architecture": "SFU (Selective Forwarding Unit)",
+  "architecture_confidence": "Medium-High",
+  "inbound_ssrcs": 8,
+  "outbound_ssrcs": 6,
+  "simulcast_in_sdp": false
+}

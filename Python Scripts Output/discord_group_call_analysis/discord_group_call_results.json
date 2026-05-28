@@ -1,0 +1,17 @@
+{
+  "platform": "discord_group_call",
+  "file": "C:\\Users\\andri\\OneDrive\\Desktop\\Master\\Log Files\\rtcstats_dump_discord_group_call.json",
+  "analyzed_at": "2026-04-07 17:00:57",
+  "connection_type": "LOCAL NETWORK only",
+  "avg_jitter_ms": 10.25,
+  "avg_rtt_ms": 94.19,
+  "packet_loss_pct": 0.0,
+  "simulcast_layers_active": 0,
+  "simulcast_layers_total": 0,
+  "layer_switches": 0,
+  "architecture": "SFU (Selective Forwarding Unit)",
+  "architecture_confidence": "Medium-High",
+  "inbound_ssrcs": 5,
+  "outbound_ssrcs": 1,
+  "simulcast_in_sdp": false
+}

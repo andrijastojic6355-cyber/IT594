@@ -1,0 +1,17 @@
+{
+  "platform": "GM",
+  "file": "C:\\Users\\andri\\OneDrive\\Desktop\\Master\\Log Files\\rtcstats_dump_GM.json",
+  "analyzed_at": "2026-03-19 16:35:03",
+  "connection_type": "TURN RELAY (restricted network)",
+  "avg_jitter_ms": 7.62,
+  "avg_rtt_ms": 39.47,
+  "packet_loss_pct": 0.0,
+  "simulcast_layers_active": 1,
+  "simulcast_layers_total": 1,
+  "layer_switches": 0,
+  "architecture": "SFU (Selective Forwarding Unit)",
+  "architecture_confidence": "Medium-High",
+  "inbound_ssrcs": 2,
+  "outbound_ssrcs": 2,
+  "simulcast_in_sdp": false
+}

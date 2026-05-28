@@ -1,0 +1,129 @@
+======================================================================
+SCREEN SHARE ANALYSIS
+======================================================================
+  Platform : gm_ss
+  File     : C:\Users\andri\OneDrive\Desktop\Master\Log Files\rtcstats_dump_gm_ss.json
+  Analyzed : 2026-03-04 19:09:59
+  Events   : 103 getStats snapshots
+
+======================================================================
+1. SCREEN SHARE DETECTION
+======================================================================
+
+  Screen Share Detected  : YES
+  Detection Method       : navigator.mediaDevices.getDisplayMedia event
+  Track Label            : screen:0:0  (confirms screen capture, not camera)
+  Requested Resolution   : up to 2560x1440
+  Requested Frame Rate   : 30 fps (ideal)
+
+  Confirmed in Stats     : YES - contentType=screenshare found in outbound-rtp
+  Camera also active     : YES
+
+======================================================================
+2. PEERCONNECTION LIFECYCLE
+======================================================================
+
+  PeerConnections created : 3
+  PC IDs seen             : ['72-1', '72-2', '72-3']
+  Renegotiations          : 9 (createOffer + setLocal + setRemote cycles)
+
+  Timeline:
+    create    PC=72-1  (relative ts: 601085.5 ms)
+    close     PC=72-1  (relative ts: 0.4 ms)
+    create    PC=72-2  (relative ts: 13.0 ms)
+    remove    PC=72-1  (relative ts: 117.4 ms)
+    create    PC=72-3  (relative ts: 166.9 ms)
+    close     PC=72-3  (relative ts: 36751.5 ms)
+
+  Finding: Platform opened a SEPARATE PeerConnection for screen share.
+           Full new DTLS handshake for the screen share stream.
+
+======================================================================
+3. CODEC IDENTIFICATION
+======================================================================
+
+  Screen Share codec(s)  : video/AV1
+  Camera codec(s)        : video/VP9, video/VP8
+
+  Finding: Platform uses DIFFERENT codecs for screen share vs camera.
+           Screen share : video/AV1
+           Camera       : video/VP9, video/VP8
+
+  video/AV1  clockRate=90000  params=level-idx=5;profile=0;tier=0
+
+======================================================================
+4. STREAM QUALITY & BANDWIDTH
+======================================================================
+
+  [PRIMARY]  SSRC: 3964469612
+    Resolution        : 320x180
+    Avg Frame Rate    : 29.2 fps
+    Total Data Sent   : 6.00 MB
+    Avg Bitrate       : 1321 kbps
+    Peak Bitrate      : 24130 kbps
+    NACK Count        : 0
+    PLI Count         : 0
+    Quality Limit     : none
+    Static Opt.       : 0.0% of intervals near-zero bitrate
+
+  [SECONDARY]  SSRC: 755484511
+    Resolution        : 320x180
+    Avg Frame Rate    : 5.2 fps
+    Total Data Sent   : 1.04 MB
+    Avg Bitrate       : 226 kbps
+    Peak Bitrate      : 4131 kbps
+    NACK Count        : 0
+    PLI Count         : 0
+    Quality Limit     : none
+    Static Opt.       : 0.0% of intervals near-zero bitrate
+
+  [TERTIARY]  SSRC: 3350853073
+    Resolution        : N/A
+    Avg Frame Rate    : 0.0 fps
+    Total Data Sent   : 0.00 MB
+    Avg Bitrate       : 0 kbps
+    Peak Bitrate      : 0 kbps
+    NACK Count        : 0
+    PLI Count         : 0
+    Quality Limit     : none
+    Static Opt.       : 100.0% of intervals near-zero bitrate
+
+  Simulcast on screen share : 3 SSRC(s) total, 2 with data
+  Finding: Multiple simulcast layers for screen share.
+
+======================================================================
+5. STATIC CONTENT OPTIMIZATION
+======================================================================
+
+  How well does the platform reduce bitrate on a static/unchanged screen?
+
+  Bitrate distribution (primary stream, 38 intervals):
+    Near-zero  (<10 kbps)  :   0 intervals  (0.0%)  <- static screen
+    Low        (10-100 kbps):   4 intervals  (10.5%)
+    Active     (>100 kbps)  :  34 intervals  (89.5%)  <- screen changing
+
+  Static optimization rating: LIMITED - continuous bitrate even on static screens
+
+======================================================================
+SUMMARY
+======================================================================
+
+  Platform              : gm_ss
+  Screen Share Present  : YES
+  Track Label           : screen:0:0
+  Separate PC opened    : YES
+  Renegotiations        : 9
+  Screen Share Codec(s) : video/AV1
+  Camera Codec(s)       : video/VP9, video/VP8
+  Codec switch on SS    : YES
+  SS Resolution         : 320x180
+  SS Avg Frame Rate     : 29.2 fps
+  SS Simulcast Streams  : 3
+  Static Optimization   : LIMITED - continuous bitrate even on static screens
+
+======================================================================
+Analysis Complete!
+======================================================================
+
+OUTPUT FILES
+----------------------------------------------------------------------
