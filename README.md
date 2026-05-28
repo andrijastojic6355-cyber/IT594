@@ -38,15 +38,14 @@ Svi paketi su hvatani u realnim mrežnim okruženjima sa namerno ostavljeniim po
 Skripte za analizu su objavljene pod MIT Licencom. 
 Fajlovi uhvaćenih paketa su dostupni za akademske svrhe.
 
+# ENG
+
 Supplementary repository for IT594 - Master's Thesis
 Metropolitan University Belgrade
 Andrija Stojić 6355
 Mentor: Prof. Nemanja Zdravković
 
 ## Repository contents
-
-# ENG
-
 1. Python Scripts — Purpose-built Python scripts written exclusively for the needs of this thesis.
    1.1 rtcstats_dump_complete_4.py - The main script used for analyzing RTCstats dump files, covering ICE candidate gathering, network quality metrics, simulcast layer analysis, multi-party architecture detection and codec extraction.
    1.2 rtcstats_dump_heartbeat.py - Supplementary script for heartbeat analyis of RTCStats dump files.
